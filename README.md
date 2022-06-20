@@ -1,4 +1,4 @@
-PACE: Parallelizable Attention-based Computation Structure Encoder for Directed Acyclic Graphs
+### PACE: Parallelizable Attention-based Computation Structure Encoder for Directed Acyclic Graphs
 ===============================================================================
 
 Installation
