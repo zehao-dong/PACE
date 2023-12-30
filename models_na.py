@@ -1307,7 +1307,7 @@ class PACE_VAE(nn.Module):
             adj_i = torch.FloatTensor(g.get_adjacency().data).to(self._get_device())
             adj[i,:num_node,:num_node] = adj_i
             # src mask
-            src_mask[head_count:head_count+self.nhead,:num_node,:num_node] = torch.stack([self._mask_generate(adj_i,num_node)[1:,1:]]*self.nhead,0)
+            src_mask[head_count:head_count+self.nhead,:num_node-1,:num_node-1] = torch.stack([self._mask_generate(adj_i,num_node)[1:,1:]]*self.nhead,0)
             # tgt mask
             tgt_mask[head_count:head_count+self.nhead,:num_node,:num_node] = torch.stack([self._mask_generate(adj_i,num_node)]*self.nhead,0)
             tgt_mask[head_count:head_count+self.nhead,num_node:,num_node:] = torch.zeros(self.nhead,self.max_n-num_node,self.max_n-num_node).to(self._get_device())
